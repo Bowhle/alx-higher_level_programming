@@ -6,7 +6,7 @@ last_digit = abs(number) % 10
 mystring = "Last digit of {} is {}". format(number, last_digit)
 
 if number < 0:
-    last_digit = -(last_digit)
+    last_digit = -last_digit
 
 if last_digit > 5:
     print(f"{mystring} and is greater than 5")

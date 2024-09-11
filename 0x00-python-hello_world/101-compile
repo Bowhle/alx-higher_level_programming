@@ -1,0 +1,7 @@
+#!/bin/bash
+# Compile the Python file stored in the $PYFILE environment variable
+python3 -m py_compile "$PYFILE"
+
+# Rename the compiled .pyc file to match the required output name
+OUTPUT="${PYFILE}c"
+mv __pycache__/"${PYFILE%.py}".cpython-*.pyc "$OUTPUT"

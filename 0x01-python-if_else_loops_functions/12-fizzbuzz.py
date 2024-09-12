@@ -7,9 +7,8 @@ For MULTIPLES OF BOTH PRINT FIZZBUZZ
 Not allowed to use import modules
 Use prototype: def fizzbuzz():
 """
-
 def fizzbuzz():
-
+    # The FizzBuzz function only prints once
     for i in range(1, 101):
         if i % 3 == 0 and i % 5 == 0:
             print("FizzBuzz", end=' ')
@@ -20,4 +19,5 @@ def fizzbuzz():
         else:
             print(i, end=' ')
 
+# Call it once, and only once
 fizzbuzz()

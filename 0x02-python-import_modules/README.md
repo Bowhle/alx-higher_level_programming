@@ -1,0 +1,1 @@
+The "0x02. Python - import & modules" project typically covers concepts like importing functions from modules, creating your own Python modules, and understanding how modules work in Python.

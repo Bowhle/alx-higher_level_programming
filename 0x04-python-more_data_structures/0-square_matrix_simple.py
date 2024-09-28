@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from typing import List, Any
+from typing import List
 
-def search_replace(my_list: List[Any], search: Any, replace: Any) -> List[Any]:
-    return [replace if item == search else item for item in my_list]
+def square_matrix_simple(matrix: List[List[int]]) -> List[List[int]]:
+    return [[element ** 2 for element in row] for row in matrix]

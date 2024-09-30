@@ -7,8 +7,5 @@ def safe_print_list_integers(my_list=None, x=0):
             count += 1
         except (ValueError, TypeError):
             continue
-        except IndexError:
-            break
-
     print("")
     return count

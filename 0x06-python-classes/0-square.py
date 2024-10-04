@@ -1,23 +1,7 @@
 #!/usr/bin/python3
-"""
-This module defines a Square class.
-"""
+"""Define a class square"""
 
 
 class Square:
-    """
-    Represents a square.
-
-    Attributes:
-        side_length (int): The length of a side of the square.
-    """
-
-    def __init__(self, side_length=0):
-        """
-        Initializes a Square instance.
-        """
-        self.side_length = side_length
-
-    def area(self):
-        """Calculate and return the area of the square"""
-        return self.side_length ** 2
+    """ representing a square object"""
+    pass

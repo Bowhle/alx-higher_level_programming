@@ -39,16 +39,11 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Public method: computes the area of the square.
-
-        Returns:
-            int: The area of the square.
-        """
+        """Public method: computes the area of the square."""
         return self.__size ** 2
 
     def my_print(self):
-        """
-        Public method: prints the square with the character #."""
+        """Public method: prints the square with the character #."""
         if self.__size == 0:
             print()
             return

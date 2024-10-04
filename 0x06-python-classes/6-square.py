@@ -22,8 +22,9 @@ class Square:
     @property
     def size(self):
         """Retrieve the size of the square
-        return:
-        int: the size of the square.
+
+        returns:
+            int: the size of the square.
         """
         return self.__size
 
@@ -37,7 +38,7 @@ class Square:
         Raises:
             TypeError: If size is not an integer
             ValueError: If size is less than 0
-            """
+        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -50,7 +51,7 @@ class Square:
 
         Returns:
             tuple: The position of the square
-            """
+        """
         return self.__position
 
     @position.setter
@@ -72,6 +73,7 @@ class Square:
 
     def my_print(self):
         """Public method: prints the square with character #
+
         If size is 0, prints an empty line. Position is used for spacing.
         """
         if self.__size == 0:

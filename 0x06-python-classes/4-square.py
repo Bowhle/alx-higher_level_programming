@@ -51,7 +51,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Publib method: prints the square with character #
+        """Public method: prints the square with character #
         If size is 0, prints an empty line
         """
         if self.__size == 0:

@@ -17,3 +17,7 @@ class Square:
         Initializes a Square instance.
         """
         self.side_length = side_length
+
+    def area(self):
+        """Calculate and return the area of the square"""
+        return self.side_length ** 2

@@ -49,3 +49,13 @@ class Square:
             int: The area of the square.
         """
         return self.__size ** 2
+
+    def my_print(self):
+        """Publib method: prints the square with character #
+        If size is 0, prints an empty line
+        """
+        if self.__size == 0:
+            print()
+            return
+        for __ in range(self.__size):
+            print('#' * self.__size)

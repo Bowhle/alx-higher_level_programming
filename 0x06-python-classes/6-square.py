@@ -79,7 +79,8 @@ class Square:
         return self.__size ** 2  # Alternatively: return self.__size * self.__size
 
     def my_print(self):
-        """Public method: prints the square with the character #.
+        """
+        Public method: prints the square with the character #.
 
         If size is 0, prints an empty line. Position is used for spacing.
         """

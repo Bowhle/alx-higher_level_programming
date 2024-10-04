@@ -17,6 +17,7 @@ class Square:
         Initializes a Square instance.
 
         Args:
-            side_length (int): The length of a side of the square. Defaults to 0.
+            side_length (int): The length of a side of the square.
+            Defaults to 0.
         """
         self.side_length = side_length

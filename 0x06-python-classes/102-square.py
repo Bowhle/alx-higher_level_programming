@@ -6,15 +6,7 @@ class Square:
     """Class that defines a square."""
 
     def __init__(self, size=0):
-        """Initialize a new Square.
-
-        Args:
-            size (float or int): The size of the square.
-
-        Raises:
-            TypeError: If size is not a number (float or int).
-            ValueError: If size is less than 0.
-        """
+        """Initialize a new Square."""
         self.size = size
 
     @property
@@ -24,15 +16,7 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Set the size of the square.
-
-        Args:
-            value (float or int): The size of the square.
-
-        Raises:
-            TypeError: If size is not a number (float or int).
-            ValueError: If size is less than 0.
-        """
+        """Set the size of the square."""
         if not isinstance(value, (int, float)):
             raise TypeError("size must be a number")
         if value < 0:

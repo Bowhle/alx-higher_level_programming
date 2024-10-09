@@ -1,0 +1,121 @@
+=====================
+5-text_indentation.py
+====================
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	>>> text_indentation("   my name")
+	my name
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+::
+
+let us try having a text with . that has 2 lines
+
+	>>> text_indentation("  yes.")
+	yes.
+	<BLANKLINE>
+
+
+::
+
+let us try having a text
+
+	>>> text_indentation("  yes. yes")
+	yes.
+	<BLANKLINE>
+	yes
+
+::
+
+let us try with ?
+
+	>>> text_indentation("yes? me?")
+	yes?
+	<BLANKLINE>
+	me?
+	<BLANKLINE>
+
+::
+
+let us try with :
+
+	>>> text_indentation("yes?me:")
+	yes?
+	<BLANKLINE>
+	me:
+	<BLANKLINE>
+
+::
+
+try text with other type int
+
+	>>> text_indentation(22)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+::
+
+let us try with with float
+
+	>>> text_indentation(22.0)
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try with list
+
+	>>> text_indentation([2, 4])
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+lets try list of list
+
+	>>> text_indentation([[2, 4], [5, 67]])
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try turple
+
+	>>> text_indentation((3,))
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try dictionary
+
+	>>> text_indentation({2: "me"})
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try None
+
+	>>> text_indentation(None)
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try set
+
+	>>> text_indentation({7, 8})
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+::
+
+let us try no call
+
+	>>> text_indentation()
+        Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'

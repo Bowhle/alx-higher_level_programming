@@ -55,7 +55,5 @@ class Rectangle:
         return "\n".join(["#" * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
-        """Return a string representation of the rectangle for recreating an instance."""
-        return (
-            f"Rectangle({self.__width}, {self.__height})"
-        )
+        """Return a string representation of the rectangle."""
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)

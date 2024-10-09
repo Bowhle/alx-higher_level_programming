@@ -1,0 +1,105 @@
+========================================
+This is a funtion that imports a module add_integer
+========================================
+
+and use it to add two integers
+========================================
+
+::
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(1, 2)
+	3
+
+-------------------------------
+a positive and a negative number
+
+	>>> add_integer(100, -2)
+	98
+
+----------------------------------
+just one number
+
+	>>> add_integer(2)
+	100
+
+-------------------------------------
+a float and a negative int
+
+	>>> add_integer(100.3, -2)
+	98
+
+__________________________________
+an int and a string
+
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	TypeError: b must be an integer
+
+--------------------------------------------------------
+try two float expected to be round down
+
+	>>> add_integer(2.9, 1.5)
+	3
+
+---------------------------------------------------
+add two negative float
+
+	>>> add_integer(-2.4, -2.3)
+	-4
+
+-------------------------------------------------
+pass None to a
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	TypeError: a must be an integer
+
+--------------------------------------------------
+pass None to b
+
+	>>> add_integer(2, None)
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	TypeError: b must be an integer
+
+--------------------------------------------------
+pass string to both
+
+	>>> add_integer("goat", "ronaldo")
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	TypeError: a must be an integer
+
+_______________________________________________________
+check for float overflow when infinity is passed
+
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	OverflowError: cannot convert float infinity to integer
+
+---------------------------------------------------------
+float overflow error when infinity is passed
+
+	>>> add_integer(2, float('inf'))
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	OverflowError: cannot convert float infinity to integer
+
+________________________________________________________________-
+deal with float NaN == cannot convert float NaN to integer
+
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	ValueError: cannot convert float NaN to integer
+
+---------------------------------------------------------------
+same as the previous for b
+
+	>>> add_integer(3, float('nan'))
+	Traceback (most recent call last):
+	 File "<stdin>", line 1, in ?
+	ValueError: cannot convert float NaN to integer

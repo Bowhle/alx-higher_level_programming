@@ -56,7 +56,8 @@ class Rectangle:
         """Return a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join([str(self.print_symbol) * self.__width for _ in range(self.__height)])
+        symbol = str(self.print_symbol)
+        return "\n".join([symbol * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
         """Return a string representation of the rectangle."""
@@ -77,3 +78,8 @@ class Rectangle:
         if rect_1.area() >= rect_2.area():
             return rect_1
         return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """Return a new Rectangle instance with width == height == size."""
+        return cls(size, size)

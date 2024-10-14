@@ -1,0 +1,99 @@
+__________________________
+Testing the BaseGeometry class to see its functionality
+__________________________
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+
+::
+
+Let us test giving value zero
+
+    >>> bg.integer_validator("my_int", 0)
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    ValueError: my_int must be greater than 0
+
+::
+
+Let us test for a value below 0
+
+    >>> bg.integer_validator("my_int", -1)
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    ValueError: my_int must be greater than 0
+
+::
+
+Let us try a value with a float
+
+    >>> bg.integer_validator("my_int", 6.99)
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: my_int must be an integer
+
+::
+
+Let us try with a string
+
+    >>> bg.integer_validator("my_int", "Crypto Tech Coder")
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: my_int must be an integer
+
+::
+
+Let us try a list
+
+    >>> bg.integer_validator("my_int", [6, 8, 9])
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: my_int must be an integer
+
+::
+
+Let us try a tuple
+
+    >>> bg.integer_validator("tuple", (0,))
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: tuple must be an integer
+
+::
+
+Let us try no input
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+::
+
+Let us try 1 input
+
+    >>> bg.integer_validator(None)
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+::
+
+Let us try value with None
+
+    >>> bg.integer_validator("The None", None)
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: The None must be an integer
+
+::
+
+    >>> bg.integer_validator("tuple_big", (2, 7, 8))
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in ?
+    TypeError: tuple_big must be an integer
+
+::
+
+    >>> bg.integer_valid

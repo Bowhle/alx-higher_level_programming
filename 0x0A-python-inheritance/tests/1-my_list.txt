@@ -1,0 +1,42 @@
+Create a new instance of MyList and add some elements to it:
+
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(1)
+>>> my_list.append(3)
+>>> my_list.append(4)
+>>> my_list.append(2)
+
+Check the current content of the list:
+
+>>> print(my_list)
+[5, 1, 3, 4, 2]
+
+Print the list sorted in ascending order:
+
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+Ensure the original list remains unchanged:
+
+>>> print(my_list)
+[5, 1, 3, 4, 2]
+
+Add a few more elements to the list:
+
+>>> my_list.extend([10, 7, 9])
+
+Check the updated content of the list:
+
+>>> print(my_list)
+[5, 1, 3, 4, 2, 10, 7, 9]
+
+Print the updated list sorted in ascending order:
+
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5, 7, 9, 10]
+
+Ensure the original list remains unchanged after sorting:
+
+>>> print(my_list)
+[5, 1, 3, 4, 2, 10, 7, 9]

@@ -1,99 +1,141 @@
 __________________________
-Testing the BaseGeometry class to see its functionality
+testing the baseclass to see its functionalty
 __________________________
 
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    >>> bg = BaseGeometry()
-    >>> bg.integer_validator("my_int", 12)
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("my_int", 12)
 
 ::
 
-Let us test giving value zero
+let us test giving value a zero
 
-    >>> bg.integer_validator("my_int", 0)
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    ValueError: my_int must be greater than 0
-
-::
-
-Let us test for a value below 0
-
-    >>> bg.integer_validator("my_int", -1)
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    ValueError: my_int must be greater than 0
+	>>> bg.integer_validator("my_int", 0)
+	Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        ValueError: my_int must be greater than 0
 
 ::
 
-Let us try a value with a float
+let us test for a value below 0
 
-    >>> bg.integer_validator("my_int", 6.99)
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: my_int must be an integer
-
-::
-
-Let us try with a string
-
-    >>> bg.integer_validator("my_int", "Crypto Tech Coder")
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: my_int must be an integer
+	>>> bg.integer_validator("my_int", -1)
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        ValueError: my_int must be greater than 0
 
 ::
 
-Let us try a list
+let us try value with float
 
-    >>> bg.integer_validator("my_int", [6, 8, 9])
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: my_int must be an integer
-
-::
-
-Let us try a tuple
-
-    >>> bg.integer_validator("tuple", (0,))
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: tuple must be an integer
+	>>> bg.integer_validator("my_int", 6.99)
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: my_int must be an integer
 
 ::
 
-Let us try no input
+let us try with string
 
-    >>> bg.integer_validator()
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-::
-
-Let us try 1 input
-
-    >>> bg.integer_validator(None)
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: integer_validator() missing 1 required positional argument: 'value'
+	>>> bg.integer_validator("my_int", "Crypto Tech Coder")
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: my_int must be an integer
 
 ::
 
-Let us try value with None
+let us try a list
 
-    >>> bg.integer_validator("The None", None)
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: The None must be an integer
-
-::
-
-    >>> bg.integer_validator("tuple_big", (2, 7, 8))
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in ?
-    TypeError: tuple_big must be an integer
+	>>> bg.integer_validator("my_int", [6, 8, 9])
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: my_int must be an integer
 
 ::
 
-    >>> bg.integer_valid
+let us try turple
+
+	>>> bg.integer_validator("turple", (0,))
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: turple must be an integer
+
+::
+
+let us try no input
+
+	>>> bg.integer_validator()
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+::
+
+let us try 1 input
+
+	>>> bg.integer_validator(None)
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+::
+
+let us try value with None
+
+	>>> bg.integer_validator("The None", None)
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: The None must be an integer
+
+::
+
+	>>> bg.integer_validator("turple_big", (2, 7, 8))
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: turple_big must be an integer
+
+::
+
+	>>> bg.integer_validator("empty string", [])
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: empty string must be an integer
+
+::
+
+	>>> bg.integer_validator("set", {2, 8})
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: set must be an integer
+
+::
+
+single list
+
+	>>> bg.integer_validator("single list", [2])
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: single list must be an integer
+
+::
+
+boolean
+
+	>>> bg.integer_validator("Boolean", True)
+        Traceback (most recent call last):
+         File "<stdin>", line 1, in ?
+        TypeError: Boolean must be an integer
+
+::
+
+Testing the area
+
+	>>> bg = BaseGeometry()
+	>>> print(bg.area) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+	<bound method BaseGeometry.area of <7-base_geometry.BaseGeometry object at...>>
+
+::
+
+	>>> bg.area()
+    	Traceback (most recent call last):
+    	Exception: area() is not implemented

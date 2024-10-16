@@ -8,8 +8,8 @@ def save_to_json_file(my_obj, filename):
 
     Args:
         my_obj (object): The object to be serialized to JSON.
-        filename (str): The name of the file where the JSON
-        representation will be written.
+        filename (str): The name of the file where the JSON representation
+                        will be written.
     """
     with open(filename, mode='w', encoding='utf-8') as a_file:
-        return a_file.write(json.dumps(my_obj))
+        json.dump(my_obj, a_file)  # Directly dump the JSON object to the file.

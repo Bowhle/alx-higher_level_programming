@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-"""A function that returns the dictionary description of an object for JSON serialization."""
+"""A function that returns the dictionary description of an object
+for JSON serialization.
+"""
 
 
 def class_to_json(obj):
-    """Returns the dictionary description of an object for JSON serialization.
+    """Returns the dictionary descr of an object for JSON serialization.
 
     Args:
         obj (object): An instance of a class.

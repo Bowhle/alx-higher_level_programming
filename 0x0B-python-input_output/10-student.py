@@ -21,7 +21,9 @@ class Student:
         """Retrieve a dictionary representation of a Student instance."""
         if attrs is None:
             return self.__dict__
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
+        if (isinstance(attrs, list)
+                and all(isinstance(attr, str)
+                        for attr in attrs)):
             return {
                 attr: getattr(self, attr) for attr in attrs
                 if hasattr(self, attr)

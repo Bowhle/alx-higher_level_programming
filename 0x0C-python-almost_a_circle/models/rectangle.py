@@ -4,7 +4,9 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle class, inherits from Base and manages width, height, x, and y."""
+    """Rectangle class, inherits from Base and manages
+    width, height, x, and y.
+    """
 
     def __init__(self, width, height, x=0, y=0, custom_id=None):
         """Initializes the Rectangle instance.
@@ -14,7 +16,7 @@ class Rectangle(Base):
             height (int): The height of the rectangle.
             x (int): The x position of the rectangle.
             y (int): The y position of the rectangle.
-            custom_id (int): The ID of the instance (optional, handled by Base).
+            custom_id (int): The ID of the instance.
         """
         super().__init__(custom_id)
         self.width = width  # Triggers width setter

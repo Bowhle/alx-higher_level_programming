@@ -17,10 +17,14 @@ class Rectangle(Base):
             custom_id (int): The ID of the instance (optional, handled by Base).
         """
         super().__init__(custom_id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        self.width = width  # Triggers width setter
+        self.height = height  # Triggers height setter
+        self.x = x  # Triggers x setter
+        self.y = y  # Triggers y setter
+
+    def area(self):
+        """Returns the area of the rectangle."""
+        return self.width * self.height
 
     @property
     def width(self):
@@ -77,7 +81,3 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-
-    def area(self):
-        """Returns the area of the rectangle."""
-        return self.width * self.height

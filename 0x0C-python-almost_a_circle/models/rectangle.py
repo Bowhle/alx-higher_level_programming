@@ -35,7 +35,9 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns a str rep of a Rectangle."""
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return (f"[Rectangle] ({self.id})"
+                f"{self.x}/{self.y} -"
+                f"{self.width}/{self.height}")
 
     @property
     def width(self):

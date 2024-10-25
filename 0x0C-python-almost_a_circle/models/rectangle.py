@@ -29,12 +29,12 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """"Prints the rectangle instance using the '#' character"""
+        """Prints the rectangle instance using the '#' character"""
         for _ in range(self.height):
             print('#' * self.width)
 
     def __str__(self):
-        """"Returns a str rep of a Rectangle."""
+        """Returns a str rep of a Rectangle."""
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
     @property

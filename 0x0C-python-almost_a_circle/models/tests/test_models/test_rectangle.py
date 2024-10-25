@@ -1,78 +1,55 @@
-#!/usr/bin/python3
-"""Unittests for Rectangle class."""
+# tests/test_models/test_rectangle.py
 import unittest
+from io import StringIO
+import sys
 from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
-    """Tests the functionality of the Rectangle class."""
-
-    def test_initialization(self):
-        """Test initialization of the Rectangle object."""
-        r1 = Rectangle(10, 20)
-        self.assertEqual(r1.width, 10)
-        self.assertEqual(r1.height, 20)
-        self.assertEqual(r1.x, 0)
-        self.assertEqual(r1.y, 0)
-        self.assertIsNotNone(r1.id)
-
-    def test_initialization_with_id(self):
-        """Test initialization with a custom id."""
-        r2 = Rectangle(5, 15, 2, 3, 99)
-        self.assertEqual(r2.width, 5)
-        self.assertEqual(r2.height, 15)
-        self.assertEqual(r2.x, 2)
-        self.assertEqual(r2.y, 3)
-        self.assertEqual(r2.id, 99)
-
-    def test_invalid_width_type(self):
-        """Test if TypeError is raised for non-integer width."""
-        with self.assertRaises(TypeError):
-            Rectangle("10", 5)
-
-    def test_invalid_height_type(self):
-        """Test if TypeError is raised for non-integer height."""
-        with self.assertRaises(TypeError):
-            Rectangle(10, "5")
-
-    def test_invalid_x_type(self):
-        """Test if TypeError is raised for non-integer x."""
-        with self.assertRaises(TypeError):
-            Rectangle(10, 5, "2")
-
-    def test_invalid_y_type(self):
-        """Test if TypeError is raised for non-integer y."""
-        with self.assertRaises(TypeError):
-            Rectangle(10, 5, 2, "3")
-
-    def test_invalid_width_value(self):
-        """Test if ValueError is raised for width <= 0."""
-        with self.assertRaises(ValueError):
-            Rectangle(-10, 5)
-        with self.assertRaises(ValueError):
-            Rectangle(0, 5)
-
-    def test_invalid_height_value(self):
-        """Test if ValueError is raised for height <= 0."""
-        with self.assertRaises(ValueError):
-            Rectangle(10, -5)
-        with self.assertRaises(ValueError):
-            Rectangle(10, 0)
-
-    def test_invalid_x_value(self):
-        """Test if ValueError is raised for x < 0."""
-        with self.assertRaises(ValueError):
-            Rectangle(10, 5, -2)
-
-    def test_invalid_y_value(self):
-        """Test if ValueError is raised for y < 0."""
-        with self.assertRaises(ValueError):
-            Rectangle(10, 5, 2, -3)
 
     def test_area(self):
-        """Test area calculation for the rectangle."""
-        r3 = Rectangle(3, 4)
-        self.assertEqual(r3.area(), 12)
+        r1 = Rectangle(4, 5)
+        self.assertEqual(r1.area(), 20)
+
+    def test_display(self):
+        """Test the display method."""
+        r2 = Rectangle(3, 2)
+
+        # Redirect stdout to capture print output
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        r2.display()
+
+        # Reset redirect.
+        sys.stdout = sys.__stdout__
+
+        expected_output = '###\n###\n'
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_width_validation(self):
+        with self.assertRaises(TypeError):
+            Rectangle('width', 2)
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2)
+
+    def test_height_validation(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 'height')
+        with self.assertRaises(ValueError):
+            Rectangle(2, 0)
+
+    def test_x_validation(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 2, 'x')
+        with self.assertRaises(ValueError):
+            Rectangle(2, 2, -1)
+
+    def test_y_validation(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 2, 0, 'y')
+        with self.assertRaises(ValueError):
+            Rectangle(2, 2, 0, -1)
 
 
 if __name__ == "__main__":

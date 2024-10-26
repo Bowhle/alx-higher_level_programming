@@ -57,7 +57,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list representation by the JSON string.
+        """Returns the list representation from the JSON string.
 
         Args:
             json_string (str): A JSON string representation of a list.
@@ -80,7 +80,9 @@ class Base:
             list_objs = []
         filename = f"{cls.__name__}.json"
         with open(filename, mode='w', encoding='utf-8') as a_file:
-            json_string = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+            json_string = cls.to_json_string(
+                [obj.to_dictionary() for obj in list_objs]
+            )
             a_file.write(json_string)
 
     @classmethod
@@ -139,7 +141,7 @@ class Base:
                 # Convert each row from DictReader into a dictionary
                 instances = []
                 for d in list_dicts:
-                    instances.append({k: int(v) for k, v in d.items()})  # Convert strings to integers
+                    instances.append({k: int(v) for k, v in d.items()})
                 return [cls.create(**d) for d in instances]
         except IOError:
             return []

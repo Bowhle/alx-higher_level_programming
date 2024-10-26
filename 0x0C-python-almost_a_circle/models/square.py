@@ -33,6 +33,10 @@ class Square(Rectangle):
 
         Args:
             value (int): The new size of the square (width and height).
+
+        Raises:
+            TypeError: If value is not an integer.
+            ValueError: If value is <= 0.
         """
         self.width = value
         self.height = value

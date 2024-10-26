@@ -2,7 +2,7 @@
 """The base class for managing instances and serialization."""
 import json
 import csv
-import os  # Importing os to check for file existence
+import os
 
 
 class Base:
@@ -32,15 +32,13 @@ class Base:
         Returns:
             An instance of the class with the given attributes.
         """
-        # Create a dummy instance with placeholder values
         if cls.__name__ == "Rectangle":
-            dummy_instance = cls(1, 1)  # Placeholder for width and height
-        else:  # Assuming the only other class is Square
-            dummy_instance = cls(1)  # Placeholder for size
+            dummy_instance = cls(1, 1)
+        else:
+            dummy_instance = cls(1)
 
-        # Use the update method to set real values
         if hasattr(dummy_instance, 'update'):
-            dummy_instance.update(**dictionary)  # Apply attributes from dictionary
+            dummy_instance.update(**dictionary)
 
         return dummy_instance
 
@@ -99,7 +97,7 @@ class Base:
                   if the file does not exist.
         """
         filename = f"{cls.__name__}.json"
-        if not os.path.isfile(filename):  # Check if the file exists
+        if not os.path.isfile(filename):
             return []
 
         with open(filename, mode='r', encoding='utf-8') as json_file:
@@ -123,7 +121,7 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()  # Write header row
+                writer.writeheader()
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
 

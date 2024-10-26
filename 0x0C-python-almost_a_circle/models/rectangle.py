@@ -35,13 +35,13 @@ class Rectangle(Base):
             print(" " * self.x + "#" * self.width)
 
     def __str__(self):
-        """Returns a str rep of a Rectangle."""
+        """Returns a string representation of a Rectangle."""
         return (f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
                 f"{self.width}/{self.height}")
 
     def update(self, *args, **kwargs):
         """Assigns args to attributes based on their order
-        or keyword args based on their keys
+        or keyword args based on their keys.
         """
         if args:
             attributes = ['id', 'width', 'height', 'x', 'y']
@@ -108,3 +108,17 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of the Rectangle.
+
+        Returns:
+            dict: A dictionary containing the id, width, height, x, and y.
+        """
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }

@@ -31,14 +31,17 @@ class Base:
         Returns:
             An instance of the class with the given attributes.
         """
-        if dictionary and dictionary != {}:
-            if cls.__name__ == "Rectangle":
-                new = cls(1, 1)  # Placeholder values
-            else:
-                new = cls(1)  # Placeholder for other classes
-            if hasattr(new, 'update'):
-                new.update(**dictionary)  # Call update only if it exists
-            return new
+        # Create a dummy instance with placeholder values
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)  # Placeholder for width and height
+        else:  # Assuming the only other class is Square
+            dummy_instance = cls(1)  # Placeholder for size
+
+        # Use the update method to set real values
+        if hasattr(dummy_instance, 'update'):
+            dummy_instance.update(**dictionary)  # Apply attributes from dictionary
+
+        return dummy_instance
 
     @staticmethod
     def to_json_string(list_dictionaries):

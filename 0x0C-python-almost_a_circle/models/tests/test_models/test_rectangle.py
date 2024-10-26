@@ -45,31 +45,59 @@ class TestRectangle(unittest.TestCase):
 
     def test_width_validation(self):
         with self.assertRaises(TypeError):
-            Rectangle(4, 2)
+            Rectangle("4", 2)
         with self.assertRaises(ValueError):
             Rectangle(0, 2)
 
     def test_height_validation(self):
         with self.assertRaises(TypeError):
-            Rectangle(2, 6)
+            Rectangle(2, "6")
         with self.assertRaises(ValueError):
             Rectangle(2, 0)
 
     def test_x_validation(self):
         with self.assertRaises(TypeError):
-            Rectangle(2, 2, 1)
+            Rectangle(2, 2, "1")
         with self.assertRaises(ValueError):
             Rectangle(2, 2, -1)
 
     def test_y_validation(self):
         with self.assertRaises(TypeError):
-            Rectangle(2, 2, 0, 1)
+            Rectangle(2, 2, 0, "1")
         with self.assertRaises(ValueError):
             Rectangle(2, 2, 0, -1)
 
     def test_large_values(self):
         r7 = Rectangle(1000000, 1000000)
         self.assertEqual(r7.area(), 1000000000000)
+
+    def test_update_method(self):
+        r8 = Rectangle(4, 5, 1, 1, 20)
+        r8.update(89, 10, 12, 2, 3)
+        self.assertEqual(r8.id, 89)
+        self.assertEqual(r8.width, 10)
+        self.assertEqual(r8.height, 12)
+        self.assertEqual(r8.x, 2)
+        self.assertEqual(r8.y, 3)
+
+    def test_update_method_kwargs(self):
+        r9 = Rectangle(4, 5, 1, 1, 30)
+        r9.update(width=20, height=25, x=3, y=4)
+        self.assertEqual(r9.width, 20)
+        self.assertEqual(r9.height, 25)
+        self.assertEqual(r9.x, 3)
+        self.assertEqual(r9.y, 4)
+
+    def test_to_dictionary(self):
+        r10 = Rectangle(4, 5, 1, 1, 40)
+        expected_dict = {
+            'id': 40,
+            'width': 4,
+            'height': 5,
+            'x': 1,
+            'y': 1
+        }
+        self.assertEqual(r10.to_dictionary(), expected_dict)
 
 
 if __name__ == "__main__":

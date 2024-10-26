@@ -20,7 +20,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """Return the string representation of the Square."""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     @property
     def size(self):
@@ -33,39 +33,31 @@ class Square(Rectangle):
 
         Args:
             value (int): The new size of the square (width and height).
+
+        Raises:
+            TypeError: If value is not an integer.
+            ValueError: If value is <= 0.
         """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
-        """Update the Square attributes.
+        """Update attributes of the Square.
 
         Args:
-            *args: Non-keyworded arguments to update attributes.
-                1st argument: id
-                2nd argument: size
-                3rd argument: x
-                4th argument: y
-            **kwargs: Keyworded arguments to update attributes.
+            *args: A list of positional arguments to assign to attributes.
+                1st argument -> id
+                2nd argument -> size
+                3rd argument -> x
+                4th argument -> y
+            **kwargs: A dictionary of key-value pairs to assign to attributes if
+                      *args is not provided.
         """
-        if args and len(args) > 0:
-            self.id = args[0]
-            self.size = args[1]
-            self.x = args[2]
-            self.y = args[3]
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for attr, arg in zip(attrs, args):
+                setattr(self, attr, arg)
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)
-
-    def to_dictionary(self):
-        """Return the dictionary representation of the Square.
-
-        Returns:
-            dict: A dictionary containing the id, size, x, and y.
-        """
-        return {
-            'id': self.id,
-            'size': self.size,
-            'x': self.x,
-            'y': self.y
-        }
+                if hasattr(self, key):
+                    setattr(self, key, value)

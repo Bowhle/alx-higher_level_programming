@@ -2,6 +2,7 @@
 """The base class for managing instances and serialization."""
 import json
 import csv
+import os  # Importing os to check for file existence
 
 
 class Base:
@@ -13,7 +14,7 @@ class Base:
 
         Args:
             base_id: The ID of the instance.
-            If not provided, a unique ID is auto assigned.
+                     If not provided, a unique ID is auto-assigned.
         """
         if base_id is not None:
             self.id = base_id
@@ -31,13 +32,15 @@ class Base:
         Returns:
             An instance of the class with the given attributes.
         """
+        # Create a dummy instance with placeholder values
         if cls.__name__ == "Rectangle":
-            dummy_instance = cls(1, 1)
-        else:
-            dummy_instance = cls(1)
+            dummy_instance = cls(1, 1)  # Placeholder for width and height
+        else:  # Assuming the only other class is Square
+            dummy_instance = cls(1)  # Placeholder for size
 
+        # Use the update method to set real values
         if hasattr(dummy_instance, 'update'):
-            dummy_instance.update(**dictionary)
+            dummy_instance.update(**dictionary)  # Apply attributes from dictionary
 
         return dummy_instance
 
@@ -49,8 +52,8 @@ class Base:
             list_dictionaries (list): A list of dictionaries.
 
         Returns:
-            str: A JSON string representation of list_dict or "[]"
-                 if list_dictionaries is None or empty.
+            str: A JSON string representation of list_dictionaries
+                 or "[]" if list_dictionaries is None or empty.
         """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
@@ -64,8 +67,8 @@ class Base:
             json_string (str): A JSON string representation of a list.
 
         Returns:
-            list: A list of dictionaries represented by the JSON string or an
-                  empty list if json_string is None or empty.
+            list: A list of dictionaries represented by the JSON string
+                  or an empty list if json_string is None or empty.
         """
         if json_string is None or json_string == "":
             return []
@@ -96,12 +99,12 @@ class Base:
                   if the file does not exist.
         """
         filename = f"{cls.__name__}.json"
-        try:
-            with open(filename, mode='r', encoding='utf-8') as json_file:
-                inst_list = cls.from_json_string(json_file.read())
-                return [cls.create(**d) for d in inst_list]
-        except IOError:
+        if not os.path.isfile(filename):  # Check if the file exists
             return []
+
+        with open(filename, mode='r', encoding='utf-8') as json_file:
+            inst_list = cls.from_json_string(json_file.read())
+            return [cls.create(**d) for d in inst_list]
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -120,7 +123,7 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
+                writer.writeheader()  # Write header row
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
 

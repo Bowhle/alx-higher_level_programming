@@ -12,7 +12,7 @@ class Base:
         """Initializes the Base instance.
 
         Args:
-            base_id : The ID of the instance.
+            base_id: The ID of the instance.
             If not provided, a unique ID is auto assigned.
         """
         if base_id is not None:
@@ -23,7 +23,14 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance with all attributes already set."""
+        """Returns an instance with all attributes already set.
+
+        Args:
+            dictionary: A dictionary of attributes to set.
+
+        Returns:
+            An instance of the class with the given attributes.
+        """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
                 new = cls(1, 1)  # Placeholder values
@@ -35,21 +42,40 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returns a JSON str rep of list_dictionaries."""
-        if list_dictionaries is None:
+        """Returns the JSON string representation of list_dictionaries.
+
+        Args:
+            list_dictionaries (list): A list of dictionaries.
+
+        Returns:
+            str: A JSON string representation of list_dictionaries or "[]"
+                 if list_dictionaries is None or empty.
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list rep by the JSON string."""
+        """Returns the list representation by the JSON string.
+
+        Args:
+            json_string (str): A JSON string representation of a list.
+
+        Returns:
+            list: A list of dictionaries represented by the JSON string.
+        """
         if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Writes the JSON str rep of list_objs to a file."""
+        """Writes the JSON string representation of list_objs to a file.
+
+        Args:
+            list_objs (list): A list of instances to serialize.
+        """
         content = []
         if list_objs is not None:
             for item in list_objs:
@@ -60,7 +86,12 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Returns a list of instances loaded from a JSON file."""
+        """Returns a list of instances loaded from a JSON file.
+
+        Returns:
+            list: A list of instances loaded from the file or an empty list
+                  if the file does not exist.
+        """
         filename = f"{cls.__name__}.json"
         try:
             with open(filename, mode='r', encoding='utf-8') as json_file:
@@ -71,7 +102,11 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Serializes list_objs to a CSV file."""
+        """Serializes list_objs to a CSV file.
+
+        Args:
+            list_objs (list): A list of instances to serialize.
+        """
         filename = f"{cls.__name__}.csv"
         with open(filename, mode='w', newline='', encoding='utf-8') as csvfile:
             if list_objs is None or list_objs == []:
@@ -88,7 +123,12 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Deserializes instances from a CSV file."""
+        """Deserializes instances from a CSV file.
+
+        Returns:
+            list: A list of instances loaded from the CSV file or an empty
+                  list if the file does not exist.
+        """
         filename = f"{cls.__name__}.csv"
         try:
             with open(filename, mode='r', encoding='utf-8') as csvfile:

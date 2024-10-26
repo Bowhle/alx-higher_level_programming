@@ -57,15 +57,16 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list representation from the JSON string.
+        """Returns the list represented by the JSON string.
 
         Args:
             json_string (str): A JSON string representation of a list.
 
         Returns:
-            list: A list of dictionaries represented by the JSON string.
+            list: A list of dictionaries represented by the JSON string or an
+                  empty list if json_string is None or empty.
         """
-        if json_string is None or len(json_string) == 0:
+        if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
 

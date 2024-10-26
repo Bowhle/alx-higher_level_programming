@@ -50,8 +50,8 @@ class Square(Rectangle):
                 2nd argument -> size
                 3rd argument -> x
                 4th argument -> y
-            **kwargs: A dictionary of key-value pairs to assign to attributes if
-                      *args is not provided.
+            **kwargs: A dictionary of key-value pairs to assign to attributes
+                      if *args is not provided.
         """
         if args:
             attrs = ["id", "size", "x", "y"]

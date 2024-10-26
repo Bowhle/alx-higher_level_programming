@@ -127,7 +127,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Deserializes instances from a CSV file.
+        """Deserialize instances from a CSV file.
 
         Returns:
             list: A list of instances loaded from the CSV file or an empty
@@ -138,12 +138,21 @@ class Base:
             with open(filename, mode='r', encoding='utf-8') as csvfile:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
-                else:
+                else:  # Assuming this is for a Square
                     fieldnames = ["id", "size", "x", "y"]
+
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
+
                 instances = []
-                for d in list_dicts:
-                    instances.append({k: int(v) for k, v in d.items()})
+                for row in list_dicts:
+                    # Handle empty fields and convert to int where possible
+                    instance_data = {
+                        k: int(v) if v else None for k, v in row.items()
+                    }
+                    instances.append(instance_data)
+
+                # Instantiate objects from the parsed dictionary data
                 return [cls.create(**d) for d in instances]
+
         except IOError:
             return []

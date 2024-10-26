@@ -76,13 +76,12 @@ class Base:
         Args:
             list_objs (list): A list of instances to serialize.
         """
-        content = []
-        if list_objs is not None:
-            for item in list_objs:
-                content.append(item.to_dictionary())
+        if list_objs is None:
+            list_objs = []
         filename = f"{cls.__name__}.json"
         with open(filename, mode='w', encoding='utf-8') as a_file:
-            json.dump(content, a_file)
+            json_string = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+            a_file.write(json_string)
 
     @classmethod
     def load_from_file(cls):
@@ -137,10 +136,10 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                # Convert strings to integers
-                list_dicts = [
-                    {k: int(v) for k, v in d.items()} for d in list_dicts
-                ]
-                return [cls.create(**d) for d in list_dicts]
+                # Convert each row from DictReader into a dictionary
+                instances = []
+                for d in list_dicts:
+                    instances.append({k: int(v) for k, v in d.items()})  # Convert strings to integers
+                return [cls.create(**d) for d in instances]
         except IOError:
             return []

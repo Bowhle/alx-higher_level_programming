@@ -31,15 +31,13 @@ class Base:
         Returns:
             An instance of the class with the given attributes.
         """
-        # Create a dummy instance with placeholder values
         if cls.__name__ == "Rectangle":
-            dummy_instance = cls(1, 1)  # Placeholder for width and height
-        else:  # Assuming the only other class is Square
-            dummy_instance = cls(1)  # Placeholder for size
+            dummy_instance = cls(1, 1)
+        else:
+            dummy_instance = cls(1)
 
-        # Use the update method to set real values
         if hasattr(dummy_instance, 'update'):
-            dummy_instance.update(**dictionary)  # Apply attributes from dictionary
+            dummy_instance.update(**dictionary)
 
         return dummy_instance
 
@@ -51,7 +49,7 @@ class Base:
             list_dictionaries (list): A list of dictionaries.
 
         Returns:
-            str: A JSON string representation of list_dictionaries or "[]"
+            str: A JSON string representation of list_dict or "[]"
                  if list_dictionaries is None or empty.
         """
         if list_dictionaries is None or len(list_dictionaries) == 0:
@@ -122,7 +120,7 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()  # Write header row
+                writer.writeheader()
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
 

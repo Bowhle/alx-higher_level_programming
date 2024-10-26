@@ -30,8 +30,9 @@ class Rectangle(Base):
 
     def display(self):
         """Prints the rectangle instance using the '#' character"""
+        print("\n" * self.y, end="")
         for _ in range(self.height):
-            print('#' * self.width)
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """Returns a str rep of a Rectangle."""

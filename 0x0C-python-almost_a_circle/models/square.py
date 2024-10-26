@@ -20,7 +20,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """Return the string representation of the Square."""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
 
     @property
     def size(self):
@@ -50,7 +50,7 @@ class Square(Rectangle):
                 2nd argument -> size
                 3rd argument -> x
                 4th argument -> y
-            **kwargs: A dictionary of key-value pairs to assign to attr
+            **kwargs: A dictionary of key-value pairs to assign to attributes
              if *args is not provided.
         """
         if args:
@@ -61,3 +61,16 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of the Square.
+
+        Returns:
+            dict: A dictionary containing the id, size, x, and y.
+        """
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }

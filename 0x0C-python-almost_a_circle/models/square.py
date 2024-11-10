@@ -1,76 +1,54 @@
 #!/usr/bin/python3
-"""Defines a Square class that inherits from Rectangle."""
-
+""" class Square that inherits from Rectangle """
 from models.rectangle import Rectangle
+""" importing the rectangle from its file loacation ommiting the .py"""
 
 
 class Square(Rectangle):
-    """A class representing a square, inheriting from Rectangle."""
-
-    def __init__(self, size, x=0, y=0, custom_id=None):
-        """Initialize a new Square instance.
-
-        Args:
-            size (int): The size of the square (width and height).
-            x (int): The x-coordinate of the square.
-            y (int): The y-coordinate of the square.
-            custom_id (int): The identity of the square.
-        """
-        super().__init__(size, size, x, y, custom_id)
+    """ A class that inherits from Rectangle with a super inheritment
+    from Base
+    """
+    def __init__(self, size, x=0, y=0, id=None):
+        """ the instantation or initialization"""
+        super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """Return the string representation of the Square."""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        """ the print function"""
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     @property
     def size(self):
-        """Get the size of the Square."""
+        """ a getter function from width"""
         return self.width
 
     @size.setter
     def size(self, value):
-        """Set the size of the Square.
-
-        Args:
-            value (int): The new size of the square (width and height).
-
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is <= 0.
-        """
+        """ getter function for the width and height"""
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
-        """Update attributes of the Square.
+        """ the function assigns attribute"""
+        attr = []
+        for ele in args:
+            attr.append(ele)
+        if len(attr) >= 1:
+            self.id = attr[0]
+        if len(attr) >= 2:
+            self.size = attr[1]
+        if len(attr) >= 3:
+            self.x = attr[2]
+        if len(attr) >= 4:
+            self.y = attr[3]
 
-        Args:
-            *args: A list of positional arguments to assign to attributes.
-                1st argument -> id
-                2nd argument -> size
-                3rd argument -> x
-                4th argument -> y
-            **kwargs: A dictionary of key-value pairs to assign to attributes
-             if *args is not provided.
-        """
-        if args:
-            attrs = ["id", "size", "x", "y"]
-            for attr, arg in zip(attrs, args):
-                setattr(self, attr, arg)
-        else:
-            for key, value in kwargs.items():
-                if hasattr(self, key):
-                    setattr(self, key, value)
+        if len(attr) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
 
     def to_dictionary(self):
-        """Returns the dictionary representation of the Square.
-
-        Returns:
-            dict: A dictionary containing the id, size, x, and y.
-        """
-        return {
-            'id': self.id,
-            'size': self.size,
-            'x': self.x,
-            'y': self.y
-        }
+        """ returns a dictionary """
+        return {"id": getattr(self, "id"),
+                "x": getattr(self, "x"),
+                "size": getattr(self, "size"),
+                "y": getattr(self, "y")
+                }

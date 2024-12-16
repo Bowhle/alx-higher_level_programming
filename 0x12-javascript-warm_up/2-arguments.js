@@ -1,11 +1,11 @@
 #!/usr/bin/node
 /* This script prints a message depending of the number of arguments passed */
 
-const args = process.argv.slice(2);
+const args = process.argv;
 
 if (args.length === 0)
     {
-    console.log('no argument');
+    console.log('No argument');
     }
 else if (args.length === 1)
     {
@@ -13,5 +13,5 @@ else if (args.length === 1)
     }
 else
     {
-    console.log('arguments found');
+    console.log('Arguments found');
     }

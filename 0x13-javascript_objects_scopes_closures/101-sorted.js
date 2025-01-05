@@ -5,15 +5,11 @@
 const dict = require('./101-data').dict;
 
 const newDict = {};
-
 for (const key in dict) {
-  const occurrence = dict[key].length;
-
-  if (newDict[occurrence] === undefined) {
-    newDict[occurrence] = [key];
+  if (newDict[dict[key]] === undefined) {
+    newDict[dict[key]] = [key];
   } else {
-    newDict[occurrence].push(key);
+    newDict[dict[key]].push(key);
   }
 }
-
 console.log(newDict);

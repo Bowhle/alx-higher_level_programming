@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Delete all State objects with a name containing the letter a."""
+"""
+Delete all State objects with a name containing
+the letter a.
+"""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

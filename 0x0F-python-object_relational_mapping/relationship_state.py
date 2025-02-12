@@ -1,19 +1,26 @@
 #!/usr/bin/python3
-"""State class with cities relationship"""
-
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
-from relationship_city import City
-from model_state import Base
+""" a function that finds a peak in a list of unsorted integers """
 
 
-class State(Base):
-    """State class definition with cities relationship"""
+def find_peak(list_of_integers):
+    """ find the peak number with the shortest algorithm"""
+    if list_of_integers == []:
+        return None
 
-    __tablename__ = 'states'
+    size = len(list_of_integers)
+    if size == 0:
+        return (None)
+    elif size == 1:
+        return (list_of_integers[0])
+    elif size == 2:
+        return max(list_of_integers)
 
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
-
-    # Relationship with City class
-    cities = relationship('City', backref='state', cascade='all, delete-orphan')
+    mid = int(size/2)
+    peak = list_of_integers[mid]
+    mylist = list_of_integers
+    if peak > mylist[mid - 1] and peak > mylist[mid + 1]:
+        return peak
+    elif peak < mylist[mid - 1]:
+        return find_peak(mylist[:mid])
+    else:
+        return find_peak(mylist[mid + 1:])
